@@ -10,12 +10,12 @@ class CoinPair(Model):
 
     def insert(self):
         # 获取火币数据
-        # datas = self.huobi.candlestick("adabtc",size=1000)
-        # print(datas)
-        client = EXCHANGES('huobi')
-        symbol = "BTC_USDT"
-        ticker = client.ticker(symbol)
-        print(ticker)
+        datas = self.huobi.candlestick("adabtc",size=1000)
+        print(datas)
+        # client = EXCHANGES('huobi')
+        # symbol = "BTC_USDT"
+        # ticker = client.ticker(symbol)
+        # print(ticker)
 
     def get_data(self):
         """
