@@ -1,37 +1,21 @@
 import pandas as pd
-import tushare as ts
-from huobi import RequestClient
-
 from data.tushare_model import Model
-from datetime import datetime, timedelta
-import pymysql
-from config.settings import Secret_Key, Access_Key
-from utils.send_method import SendMethod
-
+from data.huobi_api import HuobiApi
+from btcquant import EXCHANGES
 
 class CoinPair(Model):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # 获取请求数据
-        self.send = SendMethod()
-
+        self.huobi = HuobiApi()
 
     def insert(self):
-        # 初始化
-        pro = ts.pro_api()
-
         # 获取火币数据
-        start_date_tmp = datetime.now() - timedelta(days=120)
-        start_date = start_date_tmp.strftime("%Y%m%d")
-
-        end_date_tmp = datetime.now() - timedelta(days=1)
-        end_date = end_date_tmp.strftime("%Y%m%d%H%M%S")
-        # df = pro.coinbar(exchange='huobi', symbol='btcusdt', freq='daily', start_date=start_date, end_date=end_date)
-        request_client = RequestClient(api_key=Access_Key, secret_key=Secret_Key)
-        # print(df)
-        # candlestick_list = request_client.get_latest_candlestick("btcusdt", "Day1", 20)
-        # print(candlestick_list)
-        # 保存到数据库
+        # datas = self.huobi.candlestick("adabtc",size=1000)
+        # print(datas)
+        client = EXCHANGES('huobi')
+        symbol = "BTC_USDT"
+        ticker = client.ticker(symbol)
+        print(ticker)
 
     def get_data(self):
         """

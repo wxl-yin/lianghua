@@ -17,9 +17,9 @@ class Model(object):
         ts.set_token(TUSHARE_TOKEN)
 
         # 创建mysql数据库引擎
-        self.engine = create_engine(DB_LINK)
+        # self.engine = create_engine(DB_LINK)
 
         # 创建数据库对象
-        self.db = Database(**DB_CONFIG)
+        # self.db = Database(**DB_CONFIG)
 
 

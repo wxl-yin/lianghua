@@ -54,16 +54,24 @@ class SendMethod(object):
             :param json 请求参数为json数据
             :return: 返回响应的结果
         """
-        if method == "get":
-            res = self._send_get(url=url, data=data, **kwargs)
-        elif method == "post":
-            res = self._send_post(url=url, data=data, json=json, **kwargs)
-        elif method == "put":
-            res = self._send_put(url=url, data=data, json=json, **kwargs)
-        elif method == "delete":
-            res = self._send_delete(url=url, data=data, **kwargs)
+        method = "_send_" + method.lower()
+
+        if hasattr(self,method):
+            handler = getattr(self,method)
+            res = handler(url=url, data=data, json=json, **kwargs)
         else:
             res = None
+
+        # if method == "get":
+        #     res = self._send_get(url=url, data=data, **kwargs)
+        # elif method == "post":
+        #     res = self._send_post(url=url, data=data, json=json, **kwargs)
+        # elif method == "put":
+        #     res = self._send_put(url=url, data=data, json=json, **kwargs)
+        # elif method == "delete":
+        #     res = self._send_delete(url=url, data=data, **kwargs)
+        # else:
+        #     res = None
 
         # 返回最后的结果
         return res

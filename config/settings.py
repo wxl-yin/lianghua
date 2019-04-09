@@ -7,11 +7,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TUSHARE_TOKEN = "0df296dfec52d60ad8d6e0c4110870d2c5972d8bc52363cf0a7f2d7a"
 
 # 数据库配置
-DB_LINK = 'mysql+pymysql://root:root@127.0.0.1/lianghua?charset=utf8'
+DB_LINK = 'mysql+pymysql://root:root@localhost/lianghua?charset=utf8'
 DB_CONFIG = {
     'password': 'root',
     'db': 'lianghua',
-    "host": '127.0.0.1',
+    "host": 'localhost',
     "user": 'root',
     "charset": 'utf8',
     "port": 3306
